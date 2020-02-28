@@ -19,17 +19,11 @@ const updateUI = data => {
   icon.setAttribute('src', iconSrc);
 
   let timeSrc = null;
-  if (weather.isDayTime) {
-    timeSrc = 'img/day.svg';
-  } else {
-    timeSrc = 'img/night.svg';
-  }
+  weather.isDayTime ? (timeSrc = 'img/day.svg') : (timeSrc = 'img/night.svg');
   time.setAttribute('src', timeSrc);
 
   // remove the d-none class if present
-  if (card.classList.contains('d-none')) {
-    card.classList.remove('d-none');
-  }
+  card.classList.contains('d-none') ? card.classList.remove('d-none') : null;
 };
 
 const updateCity = async city => {
