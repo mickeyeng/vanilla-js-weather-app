@@ -17,20 +17,26 @@
     <div class="container">
       <header>
         <h1>Mickey's Weather App</h1>
-        <label>Enter a location for weather information</label>
-        <input type="text" id="search" name="city" />
+        <form class="form">
+          <label for="city">Enter a location for weather information</label>
+          <input type="text" id="search" name="city" />
+        </form>
       </header>
 
-      <section class="card">
-        <img src="https://via.placeholder.com/400x300" />
+      <section class="card d-none">
+        <img class="time" src="https://via.placeholder.com/400x300" />
+        <div class="icon">
+          <img src="" alt="" />
+        </div>
         <div class="details">
           <h2>CITY NAME</h2>
-          <p>Weather condition</p>
+          <p id="weather-condition">Weather condition <span>&deg;C</span></p>
           <h2>TEMP</h2>
         </div>
       </section>
     </div>
 
-    <script src="./index.js" async defer></script>
+    <script src="./forecast.js" async defer></script>
+    <script src="./app.js" async defer></script>
   </body>
 </html>
