@@ -155,6 +155,9 @@ header #search {
 }
 
 @media (max-width: 600px) {
+  .nav {
+    padding-bottom: 50px;
+  }
   .nav h1 {
     font-size: 1rem;
   }
