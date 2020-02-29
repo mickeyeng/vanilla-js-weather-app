@@ -52,7 +52,8 @@ cityForm.addEventListener('submit', e => {
 
   // set local storage
   localStorage.setItem('city', city);
-  city.value('');
+  // city.value('');
+
   // update the ui with new city
   updateCity(city)
     .then(data => updateUI(data))
