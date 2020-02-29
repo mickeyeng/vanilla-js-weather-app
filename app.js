@@ -1,15 +1,26 @@
 const cityForm = document.querySelector('form');
+const heading = document.querySelector('.nav');
 const card = document.querySelector('.card');
 const details = document.querySelector('.details');
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
+const checkbox = document.querySelector('checkbox');
+
+// Toggle dark mode
+document.addEventListener('change', () => {
+  // change the theme
+  document.body.classList.toggle('dark');
+  details.classList.toggle('dark');
+  card.classList.toggle('dark');
+  heading.classList.toggle('dark');
+});
 
 const updateUI = data => {
-  const { cityDets, weather } = data;
+  const { cityDetails, weather } = data;
 
   // update details template
   details.innerHTML = `
-  <h2>${cityDets.EnglishName}</h2>
+  <h2>${cityDetails.EnglishName}</h2>
   <p>${weather.WeatherText}</>
     <p id="weather-condition">${weather.Temperature.Metric.Value}<span> &deg;C</span></p>
   `;
@@ -27,9 +38,9 @@ const updateUI = data => {
 };
 
 const updateCity = async city => {
-  const cityDets = await getCity(city);
-  const weather = await getWeather(cityDets.Key);
-  return { cityDets, weather };
+  const cityDetails = await getCity(city);
+  const weather = await getWeather(cityDetails.Key);
+  return { cityDetails, weather };
 };
 
 cityForm.addEventListener('submit', e => {
@@ -41,7 +52,7 @@ cityForm.addEventListener('submit', e => {
 
   // set local storage
   localStorage.setItem('city', city);
-
+  city.value('');
   // update the ui with new city
   updateCity(city)
     .then(data => updateUI(data))
